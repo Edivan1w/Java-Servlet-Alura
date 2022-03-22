@@ -1,5 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:url value="/novaEmpresa" var="linkServletNovaEmpresa"/>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<c:url value="/entrada" var="linkEntrada"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
- <form action="${linkServletNovaEmpresa}" method="post">
  
-   Nome: <input type="text" name="nome"/>
-   Data abertura: <input type="text" name="data"/>
-        <input type="submit"/>
- 
- </form>
+           <form action="${linkEntrada}" method="post">
+             Nome: <input type="text" name="nome"/>
+             DataAbertura: <input type="text" name="data"/>
+                   <input type="hidden" name="acao" value="NovaEmpresas"/>
+                   <input type="submit"/>
+                </form>
+  
 
 </body>
 </html>
