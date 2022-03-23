@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class AlteraEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 
 		
 		String paramNome = request.getParameter("nome");
@@ -38,7 +39,10 @@ public class AlteraEmpresa {
 		empresa.setNome(paramNome);
 		empresa.setDataAbertura(dataAbertura);
 		
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
+		
+		
+		//response.sendRedirect("entrada?acao=ListaEmpresas");
 	}
 
 }

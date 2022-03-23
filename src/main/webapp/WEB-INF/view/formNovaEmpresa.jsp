@@ -13,7 +13,7 @@
            <form action="${linkEntrada}" method="post">
              Nome: <input type="text" name="nome"/>
              DataAbertura: <input type="text" name="data"/>
-                   <input type="hidden" name="acao" value="NovaEmpresas"/>
+                   <input type="hidden" name="acao" value="NovaEmpresa"/>
                    <input type="submit"/>
                 </form>
   

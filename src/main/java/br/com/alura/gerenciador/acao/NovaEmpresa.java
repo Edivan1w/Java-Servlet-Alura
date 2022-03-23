@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class NovaEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("Cadastrando empresa");
 		Empresa empresa = new Empresa();
 		String nomeEmpresa = request.getParameter("nome");
@@ -32,7 +33,9 @@ public class NovaEmpresa {
 		banco.adiciona(empresa);
 		
 		request.setAttribute("empresa", empresa);
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		
+	
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 		//chamar o arquivo jsp
 //		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");

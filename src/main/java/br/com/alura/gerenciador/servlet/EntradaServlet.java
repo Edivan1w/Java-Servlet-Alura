@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.acao.AlteraEmpresa;
+import br.com.alura.gerenciador.acao.FormularioEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
 import br.com.alura.gerenciador.acao.MostraEmpresa;
 import br.com.alura.gerenciador.acao.NovaEmpresa;
@@ -32,19 +33,29 @@ public class EntradaServlet extends HttpServlet {
 			nome = acao.execulaLista(request, response);
 		}else if(paramAcao.equals("RemoveEmpresa")) {
 			RemoveEmpresa acao = new RemoveEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}else if(paramAcao.equals("MostraEmpresa")) {
 			MostraEmpresa acao = new MostraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}else if(paramAcao.equals("AlteraEmpresa")) {
 			AlteraEmpresa acao = new AlteraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}else if(paramAcao.equals("NovaEmpresa")) {
 			NovaEmpresa acao = new NovaEmpresa();
-			acao.executa(request, response);
-	}
-	
-		RequestDispatcher rd = request.getRequestDispatcher(nome);
-		rd.forward(request, response);
-	}
+			nome = acao.executa(request, response);
+	}else if(paramAcao.equals("FormularioEmpresa")) {
+		FormularioEmpresa acao = new FormularioEmpresa();
+		nome = acao.executa(request, response);
 }
+	
+		String[] tipoEndereco = nome.split(":");
+		if(tipoEndereco[0].equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEndereco[1]);
+			rd.forward(request, response);
+		}else {
+			response.sendRedirect(tipoEndereco[1]);
+		}
+		
+	}
+	}
+
