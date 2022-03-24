@@ -12,8 +12,11 @@
 </head>
 <body>
 
-     
+     Usuário logado: ${usuario.login}
 
+    <br/>
+    <br/> 
+    <br/>
 	Lista de empresas:
 	<br />
 	<ul>
