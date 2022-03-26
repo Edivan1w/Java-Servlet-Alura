@@ -12,6 +12,9 @@
 </head>
 <body>
 
+     <c:import url="logout-parcial.jsp"></c:import>
+       
+
      Usuário logado: ${usuario.login}
 
     <br/>
@@ -27,7 +30,9 @@
 			</li>
 		</c:forEach>
 	</ul>
-
+       <br/> 
+    <br/>
+    
 
 
 
